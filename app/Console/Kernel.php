@@ -7,6 +7,15 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {
+    
+    /**
+     * The Artisan commands provided by your application.
+     *
+     * @var array
+     */
+    protected $commands = [
+        Commands\NotificationCommand::class,
+    ];
     /**
      * Define the application's command schedule.
      *
@@ -14,8 +23,12 @@ class Kernel extends ConsoleKernel
      * @return void
      */
     protected function schedule(Schedule $schedule)
-    {
-        // $schedule->command('inspire')->hourly();
+    {        
+        //Run this command every minute
+        $schedule->command('notice:board')->everyMinute();
+        //->everyFiveMinutes();
+        //->everyThirtyMinutes();
+        // and more
     }
 
     /**
